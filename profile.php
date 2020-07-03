@@ -15,6 +15,12 @@ if (!$uid = Input::get('user')) {
 ?>
 
 <?php include './includes/header.php'; ?>
-<h2><?php echo escape($data['nickname']) ?></h2>
+<div class="row">
+    <div class="col-4">
+        <img class="pb-2" src="<?php echo escape($user->avatar()) ?>" alt="">
+        <h2><?php echo escape($data['nickname']) ?></h2>
+        <h3><?php echo escape($data['username']) ?></h3>
+    </div>
+</div>
 
 <?php include './includes/footer.php'; ?>
