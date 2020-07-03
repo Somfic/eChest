@@ -1,9 +1,6 @@
 <?php require_once './core/init.php'; ?>
 <?php include './includes/top.php'; ?>
 
-<?php header("refresh:4;url=" . Session::get('result-redirect'));
-?>
-
 <div class="flex center height-screen align-center">
     <div>
         <h1 class="mb-2">
