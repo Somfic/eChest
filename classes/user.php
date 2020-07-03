@@ -50,12 +50,11 @@ class User
 
     public function login($username = null, $password = null, $remember = false)
     {
-        $user = $this->find($username);
+        $user = $this->find($username, 'username');
 
         if (!$username && !$password && $this->exists()) {
             Session::set($this->_sessionName, $this->data()['id']);
         } else {
-
             if ($user) {
                 if ($this->data()['password'] === Hash::make($password, $this->data()['salt'])) {
                     Session::set($this->_sessionName, $this->data()['id']);
@@ -122,12 +121,14 @@ class User
         }
     }
 
-    public function find($user = null)
+    public function find($user = null, $field = null)
     {
         $db = $this->_db;
 
         if ($user) {
-            $field = (is_numeric($user)) ? 'id' : 'uid';
+            if (!$field) {
+                $field = (is_numeric($user)) ? 'id' : 'uid';
+            }
 
             $db->where($field, $user);
             $data = $db->getOne('users');
@@ -144,6 +145,11 @@ class User
     public function data()
     {
         return $this->_data;
+    }
+
+    public function avatar()
+    {
+        return "https://minotar.net/helm/" . $this->data()['uid'];
     }
 
     public function isLoggedIn()
