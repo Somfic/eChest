@@ -1,4 +1,7 @@
-<?php require_once './core/init.php'; ?>
+<?php require_once 'core/init.php'; ?>
+<p>hi</p>
+
+
 <?php
 if (!$uid = Input::get('user')) {
     Result::error('Account not found', 'That account could not be found', '/index.php');
@@ -14,7 +17,8 @@ if (!$uid = Input::get('user')) {
 }
 ?>
 
-<?php include './includes/header.php'; ?>
+<?php include 'includes/header.php'; ?>
+<p>hi</p>
 <div class="row">
     <div class="col-4">
         <img class="pb-2" src="<?php echo escape($user->avatar()) ?>" alt="">
@@ -23,4 +27,4 @@ if (!$uid = Input::get('user')) {
     </div>
 </div>
 
-<?php include './includes/footer.php'; ?>
+<?php include 'includes/footer.php'; ?>
