@@ -18,7 +18,7 @@ if (Token::check(Input::get('token'))) {
         $login = $user->login(Input::get('username'), Input::get('password'), $remember);
 
         if ($login) {
-            Result::success('Logged in', greeting() . ' ' . Input::get('username') . '!', 'index.php');
+            Result::success('Logged in', greeting() . ' ' . $user->data()['nickname'] . '!', 'index.php');
         } else {
             Result::error('You weren\'t logged in', 'Hmm, let\'s try that again...', 'index.php');
         }
@@ -34,6 +34,8 @@ if (Token::check(Input::get('token'))) {
         <div class="align-center width-full py-2">
             <h1><b>eChest</b></h1>
             <h3>Please log in to continue</h3>
+            <p>
+            </p>
         </div>
     </div>
     <div class="col-12 col-lp-6 flex center px-4">
