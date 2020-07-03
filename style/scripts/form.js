@@ -2,7 +2,6 @@ $(document).ready(() => {
 	let inputs = $('.form-input.floating');
 
 	inputs.change((e) => {
-		console.log('!');
 		let input = $(e.target);
 		checkChange(input);
 	});
@@ -13,8 +12,6 @@ $(document).ready(() => {
 	});
 
 	function checkChange(input) {
-		console.log(input.val());
-
 		if (input.val() == '') {
 			input.parent().removeClass('not-empty');
 		} else {
