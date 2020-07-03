@@ -15,11 +15,11 @@ $text-success: #63cd5f;
 $text-error: #f94141;
 
 // Colors - accent
-$accent: #e16ae6;
+$accent: rgb(227, 0, 236);
 $accent-hover: ligthen($accent, 5%);
 $accent-focus: darken($accent, 5%);
 
-$accent2: rgb(109, 152, 163);
+$accent2: rgb(105, 184, 204);
 $accent2-hover: ligthen($accent2, 5%);
 $accent2-focus: darken($accent2, 5%);
 
