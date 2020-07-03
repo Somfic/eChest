@@ -1,0 +1,17 @@
+@function getTextColor($color) {
+	@if (lightness($color) > 40) {
+		@return $text-dark;
+	} @else {
+		@return $text-light;
+	}
+}
+
+@function pow($base, $exponent) {
+	$raised: 1;
+
+	@for $i from 1 through $exponent {
+		$raised: $raised * $base;
+	}
+
+	@return $raised;
+}

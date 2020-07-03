@@ -1,0 +1,36 @@
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+
+	&-vertical {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+}
+
+.flex-fit {
+	flex-grow: 1;
+}
+
+.center-x,
+.center {
+	align-items: center;
+}
+
+.center-y,
+.center {
+	justify-content: center;
+}
+
+.width-full {
+	min-width: 100%;
+}
+
+.height-full {
+	min-height: 100%;
+}
+
+.height-screen {
+	height: 100vh;
+}

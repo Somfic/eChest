@@ -1,0 +1,39 @@
+// Font
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap');
+$font: 'Ubuntu', sans-serif;
+
+// Colors - background
+$bg: rgb(24, 23, 34);
+$bg-form: rgb(36, 36, 36);
+$bg-contrast: black;
+
+// Colors - foreground
+$text-dark: rgb(15, 15, 15);
+$text-light: rgb(216, 216, 216);
+$text-muted: gray;
+$text-success: #63cd5f;
+$text-error: #f94141;
+
+// Colors - accent
+$accent: #e16ae6;
+$accent-hover: ligthen($accent, 5%);
+$accent-focus: darken($accent, 5%);
+
+$accent2: rgb(109, 152, 163);
+$accent2-hover: ligthen($accent2, 5%);
+$accent2-focus: darken($accent2, 5%);
+
+// Shadows
+$card-shadow: 6px 6px 16px 0 rgba(217, 210, 200, 0.51), -6px -6px 26px 0 rgba(255, 255, 255, 0.83);
+
+// Corners
+$card-radius: 10px;
+$border-radius: 0.5rem;
+
+.card {
+	box-shadow: $card-shadow;
+	border-radius: $card-radius;
+	padding: 20px;
+}
+
+@import './theia';

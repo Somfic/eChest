@@ -1,0 +1,68 @@
+@for $i from -1 to 5 {
+	$amount: #{pow($i, 1.25) / 4}rem;
+	$name: $i;
+	@if ($i == -1) {
+		$amount: auto;
+		$name: 'a';
+	}
+
+	.m-#{$name} {
+		margin: $amount !important;
+	}
+
+	.mt-#{$name} {
+		margin-top: $amount !important;
+	}
+
+	.mr-#{$name} {
+		margin-right: $amount !important;
+	}
+
+	.mb-#{$name} {
+		margin-bottom: $amount !important;
+	}
+
+	.ml-#{$name} {
+		margin-left: $amount !important;
+	}
+
+	.mx-#{$name} {
+		margin-left: $amount !important;
+		margin-right: $amount !important;
+	}
+
+	.my-#{$name} {
+		margin-top: $amount !important;
+		margin-bottom: $amount !important;
+	}
+
+	.p-#{$name} {
+		padding: $amount !important;
+	}
+
+	.pt-#{$name} {
+		padding-top: $amount !important;
+	}
+
+	.pr-#{$name} {
+		padding-right: $amount !important;
+	}
+
+	.pb-#{$name} {
+		padding-bottom: $amount !important;
+	}
+
+	.pl-#{$name} {
+		padding-left: $amount !important;
+	}
+
+	.px-#{$name} {
+		padding-left: $amount !important;
+		padding-right: $amount !important;
+	}
+
+	.py-#{$name} {
+		padding-top: $amount !important;
+		padding-bottom: $amount !important;
+	}
+}

@@ -1,0 +1,51 @@
+.button {
+	background: none;
+	color: $accent;
+	border: 1px solid $accent;
+	padding: 0.5em 2rem;
+	border-radius: $border-radius;
+	letter-spacing: 0.01em;
+	transition: 200ms ease;
+	line-height: 1.5;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+
+	&:hover {
+		border: 1px solid $accent;
+		background-color: $accent;
+		color: getTextColor($accent);
+	}
+
+	&:focus {
+		outline: none;
+		border: 1px solid $accent;
+	}
+
+	&:active {
+		background-color: darken($accent, 5%);
+		color: getTextColor(darken($accent, 5%));
+	}
+}
+
+.button.primary {
+	background-color: $accent;
+	color: getTextColor($accent);
+	border: 1px solid $bg-form;
+
+	&:hover {
+		border: 1px solid $accent;
+		background-color: $accent;
+		color: getTextColor($accent);
+	}
+
+	&:focus {
+		outline: none;
+		border: 1px solid $accent;
+	}
+
+	&:active {
+		background-color: darken($accent, 5%);
+		color: getTextColor(darken($accent, 5%));
+	}
+}

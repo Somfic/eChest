@@ -1,0 +1,27 @@
+.muted {
+	color: $text-muted;
+}
+
+.accent {
+	color: $accent;
+}
+
+.fg {
+	color: $text-light;
+}
+
+.bg {
+	background-color: $bg;
+}
+
+.bg-contrast {
+	background: linear-gradient(255deg, $accent, $accent2);
+}
+
+.success {
+	color: $text-success;
+}
+
+.error {
+	color: $text-error;
+}

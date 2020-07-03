@@ -1,0 +1,65 @@
+h1 {
+	font-size: 4.25rem;
+	line-height: 5rem;
+	font-weight: 400;
+}
+
+h2 {
+	font-size: 2.5rem;
+	line-height: 3rem;
+	font-weight: 400;
+}
+
+h3 {
+	font-size: 1.25rem;
+	line-height: 1.875rem;
+	font-weight: 400;
+}
+
+h4 {
+	font-size: 1.25rem;
+	line-height: 1.875rem;
+	font-weight: 400;
+}
+
+h5,
+h6 {
+	font-size: 0.9375rem;
+	line-height: 1.5rem;
+	font-weight: 400;
+}
+
+p {
+	font-size: 1rem;
+	max-width: 60ch;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+}
+
+body {
+	font-family: $font;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.align-justify {
+	text-align: justify;
+}

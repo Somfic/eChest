@@ -1,0 +1,25 @@
+a {
+	text-decoration: none;
+	color: $accent;
+	position: relative;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.link:after {
+	border-bottom: 0.1em solid $accent;
+	content: '';
+	position: absolute;
+	right: 0;
+	bottom: 0rem;
+	left: 0;
+	width: 0%;
+	transition: 200ms ease;
+}
+
+.link:hover:after,
+.link:focus:after {
+	outline: none;
+	width: 100%;
+}
