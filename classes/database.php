@@ -1,10 +1,10 @@
 <?php
 
 /**
- * database Class
+ * Database Class
  *
  * @category  Database Access
- * @package   database
+ * @package   Database
  * @author    Jeffery Way <jeffrey@jeffrey-way.com>
  * @author    Josh Campbell <jcampbell@ajillion.com>
  * @author    Alexander V. Butenko <a.butenka@gmail.com>
@@ -14,13 +14,13 @@
  * @version   2.9.3
  */
 
-class database
+class Database
 {
 
     /**
      * Static instance of self
      *
-     * @var database
+     * @var Database
      */
     protected static $_instance;
 
@@ -296,7 +296,7 @@ class database
     }
 
     /**
-     * A method to connect to the database
+     * A method to connect to the Database
      *
      * @param null|string $connectionName
      *
@@ -361,7 +361,7 @@ class database
     }
 
     /**
-     * A method to disconnect from the database
+     * A method to disconnect from the Database
      *
      * @params string $connection connection name to disconnect
      *
@@ -423,9 +423,9 @@ class database
      * instantiated object from within another class.
      * Inheriting this class would require reloading connection info.
      *
-     * @uses $db = database::getInstance();
+     * @uses $db = Database::getInstance();
      *
-     * @return database Returns the current instance.
+     * @return Database Returns the current instance.
      */
     public static function getInstance()
     {
@@ -435,7 +435,7 @@ class database
     /**
      * Reset states after an execution
      *
-     * @return database Returns the current instance.
+     * @return Database Returns the current instance.
      */
     protected function reset()
     {
@@ -470,7 +470,7 @@ class database
     /**
      * Helper function to create dbObject with JSON return type
      *
-     * @return database
+     * @return Database
      */
     public function jsonBuilder()
     {
@@ -482,7 +482,7 @@ class database
      * Helper function to create dbObject with array return type
      * Added for consistency as that's default output type
      *
-     * @return database
+     * @return Database
      */
     public function arrayBuilder()
     {
@@ -493,7 +493,7 @@ class database
     /**
      * Helper function to create dbObject with object return type.
      *
-     * @return database
+     * @return Database
      */
     public function objectBuilder()
     {
@@ -506,7 +506,7 @@ class database
      *
      * @param string $prefix Contains a table prefix
      *
-     * @return database
+     * @return Database
      */
     public function setPrefix($prefix = '')
     {
@@ -656,12 +656,12 @@ class database
     /**
      * This method allows you to specify multiple (method chaining optional) options for SQL queries.
      *
-     * @uses $database->setQueryOption('name');
+     * @uses $Database->setQueryOption('name');
      *
      * @param string|array $options The options name of the query.
      *
      * @throws Exception
-     * @return database
+     * @return Database
      */
     public function setQueryOption($options)
     {
@@ -698,7 +698,7 @@ class database
     /**
      * Function to enable SQL_CALC_FOUND_ROWS in the get queries
      *
-     * @return database
+     * @return Database
      * @throws Exception
      */
     public function withTotalCount()
@@ -710,12 +710,12 @@ class database
     /**
      * A convenient SELECT * function.
      *
-     * @param string    $tableName   The name of the database table to work with.
+     * @param string    $tableName   The name of the Database table to work with.
      * @param int|array $numRows     Array to define SQL limit in format Array ($offset, $count)
      *                               or only $count
      * @param string    $columns     Desired columns
      *
-     * @return array|database Contains the returned rows from the select query.
+     * @return array|Database Contains the returned rows from the select query.
      * @throws Exception
      */
     public function get($tableName, $numRows = null, $columns = '*')
@@ -752,7 +752,7 @@ class database
     /**
      * A convenient SELECT * function to get one record.
      *
-     * @param string $tableName The name of the database table to work with.
+     * @param string $tableName The name of the Database table to work with.
      * @param string $columns   Desired columns
      *
      * @return array Contains the returned rows from the select query.
@@ -762,7 +762,7 @@ class database
     {
         $res = $this->get($tableName, 1, $columns);
 
-        if ($res instanceof database) {
+        if ($res instanceof Database) {
             return $res;
         } elseif (is_array($res) && isset($res[0])) {
             return $res[0];
@@ -776,7 +776,7 @@ class database
     /**
      * A convenient SELECT COLUMN function to get a single column value from one row
      *
-     * @param string $tableName The name of the database table to work with.
+     * @param string $tableName The name of the Database table to work with.
      * @param string $column    The desired column
      * @param int    $limit     Limit of rows to select. Use null for unlimited..1 by default
      *
@@ -880,7 +880,7 @@ class database
      * A convenient function that returns TRUE if exists at least an element that
      * satisfy the where condition specified calling the "where" method before this one.
      *
-     * @param string $tableName The name of the database table to work with.
+     * @param string $tableName The name of the Database table to work with.
      *
      * @return bool
      * @throws Exception
@@ -894,7 +894,7 @@ class database
     /**
      * Update query. Be sure to first call the "where" method.
      *
-     * @param string $tableName The name of the database table to work with.
+     * @param string $tableName The name of the Database table to work with.
      * @param array  $tableData Array of data to update the desired row.
      * @param int    $numRows   Limit on the number of rows that can be updated.
      *
@@ -922,7 +922,7 @@ class database
     /**
      * Delete query. Call the "where" method first.
      *
-     * @param string    $tableName   The name of the database table to work with.
+     * @param string    $tableName   The name of the Database table to work with.
      * @param int|array $numRows     Array to define SQL limit in format Array ($offset, $count)
      *                               or only $count
      *
@@ -956,14 +956,14 @@ class database
     /**
      * This method allows you to specify multiple (method chaining optional) AND WHERE statements for SQL queries.
      *
-     * @uses $database->where('id', 7)->where('title', 'MyTitle');
+     * @uses $Database->where('id', 7)->where('title', 'MyTitle');
      *
-     * @param string $whereProp  The name of the database field.
-     * @param mixed  $whereValue The value of the database field.
+     * @param string $whereProp  The name of the Database field.
+     * @param mixed  $whereValue The value of the Database field.
      * @param string $operator   Comparison operator. Default is =
      * @param string $cond       Condition of where statement (OR, AND)
      *
-     * @return database
+     * @return Database
      */
     public function where($whereProp, $whereValue = 'DBNULL', $operator = '=', $cond = 'AND')
     {
@@ -982,7 +982,7 @@ class database
      * @param array  $updateColumns Variable with values
      * @param string $lastInsertId  Variable value
      *
-     * @return database
+     * @return Database
      */
     public function onDuplicate($updateColumns, $lastInsertId = null)
     {
@@ -994,13 +994,13 @@ class database
     /**
      * This method allows you to specify multiple (method chaining optional) OR WHERE statements for SQL queries.
      *
-     * @uses $database->orWhere('id', 7)->orWhere('title', 'MyTitle');
+     * @uses $Database->orWhere('id', 7)->orWhere('title', 'MyTitle');
      *
-     * @param string $whereProp  The name of the database field.
-     * @param mixed  $whereValue The value of the database field.
+     * @param string $whereProp  The name of the Database field.
+     * @param mixed  $whereValue The value of the Database field.
      * @param string $operator   Comparison operator. Default is =
      *
-     * @return database
+     * @return Database
      */
     public function orWhere($whereProp, $whereValue = 'DBNULL', $operator = '=')
     {
@@ -1010,15 +1010,15 @@ class database
     /**
      * This method allows you to specify multiple (method chaining optional) AND HAVING statements for SQL queries.
      *
-     * @uses $database->having('SUM(tags) > 10')
+     * @uses $Database->having('SUM(tags) > 10')
      *
-     * @param string $havingProp  The name of the database field.
-     * @param mixed  $havingValue The value of the database field.
+     * @param string $havingProp  The name of the Database field.
+     * @param mixed  $havingValue The value of the Database field.
      * @param string $operator    Comparison operator. Default is =
      *
      * @param string $cond
      *
-     * @return database
+     * @return Database
      */
 
     public function having($havingProp, $havingValue = 'DBNULL', $operator = '=', $cond = 'AND')
@@ -1040,13 +1040,13 @@ class database
     /**
      * This method allows you to specify multiple (method chaining optional) OR HAVING statements for SQL queries.
      *
-     * @uses $database->orHaving('SUM(tags) > 10')
+     * @uses $Database->orHaving('SUM(tags) > 10')
      *
-     * @param string $havingProp  The name of the database field.
-     * @param mixed  $havingValue The value of the database field.
+     * @param string $havingProp  The name of the Database field.
+     * @param mixed  $havingValue The value of the Database field.
      * @param string $operator    Comparison operator. Default is =
      *
-     * @return database
+     * @return Database
      */
     public function orHaving($havingProp, $havingValue = null, $operator = null)
     {
@@ -1056,14 +1056,14 @@ class database
     /**
      * This method allows you to concatenate joins for the final SQL statement.
      *
-     * @uses $database->join('table1', 'field1 <> field2', 'LEFT')
+     * @uses $Database->join('table1', 'field1 <> field2', 'LEFT')
      *
      * @param string $joinTable     The name of the table.
      * @param string $joinCondition the condition.
      * @param string $joinType      'LEFT', 'INNER' etc.
      *
      * @throws Exception
-     * @return database
+     * @return Database
      */
     public function join($joinTable, $joinCondition, $joinType = '')
     {
@@ -1090,7 +1090,7 @@ class database
      *
      * @author Jonas Barascu (Noneatme)
      *
-     * @param string $importTable    The database table where the data will be imported into.
+     * @param string $importTable    The Database table where the data will be imported into.
      * @param string $importFile     The file to be imported. Please use double backslashes \\ and make sure you
      * @param string $importSettings An Array defining the import settings as described in the README.md
      *
@@ -1217,13 +1217,13 @@ class database
     /**
      * This method allows you to specify multiple (method chaining optional) ORDER BY statements for SQL queries.
      *
-     * @uses $database->orderBy('id', 'desc')->orderBy('name', 'desc', '^[a-z]')->orderBy('name', 'desc');
+     * @uses $Database->orderBy('id', 'desc')->orderBy('name', 'desc', '^[a-z]')->orderBy('name', 'desc');
      *
-     * @param string $orderByField         The name of the database field.
+     * @param string $orderByField         The name of the Database field.
      * @param string $orderbyDirection
      * @param mixed  $customFieldsOrRegExp Array with fieldset for ORDER BY FIELD() ordering or string with regular expression for ORDER BY REGEXP ordering
      *
-     * @return database
+     * @return Database
      * @throws Exception
      */
     public function orderBy($orderByField, $orderbyDirection = "DESC", $customFieldsOrRegExp = null)
@@ -1260,11 +1260,11 @@ class database
     /**
      * This method allows you to specify multiple (method chaining optional) GROUP BY statements for SQL queries.
      *
-     * @uses $database->groupBy('name');
+     * @uses $Database->groupBy('name');
      *
-     * @param string $groupByField The name of the database field.
+     * @param string $groupByField The name of the Database field.
      *
-     * @return database
+     * @return Database
      */
     public function groupBy($groupByField)
     {
@@ -1283,7 +1283,7 @@ class database
      * @param  string $method The table lock method. Can be READ or WRITE.
      *
      * @throws Exception
-     * @return database
+     * @return Database
      */
     public function setLockMethod($method)
     {
@@ -1359,11 +1359,11 @@ class database
     }
 
     /**
-     * Unlocks all tables in a database.
+     * Unlocks all tables in a Database.
      * Also commits transactions.
      *
      * @author Jonas Barascu
-     * @return database
+     * @return Database
      * @throws Exception
      */
     public function unlock()
@@ -1559,7 +1559,7 @@ class database
      *
      * @param int|array $numRows     Array to define SQL limit in format Array ($offset, $count)
      *                               or only $count
-     * @param array     $tableData   Should contain an array of data for updating the database.
+     * @param array     $tableData   Should contain an array of data for updating the Database.
      *
      * @return mysqli_stmt|bool Returns the $stmt object.
      * @throws Exception
@@ -1760,7 +1760,7 @@ class database
             }
 
             // Subquery value
-            if ($value instanceof database) {
+            if ($value instanceof Database) {
                 $this->_query .= $this->_buildPair("", $value) . ", ";
                 continue;
             }
@@ -2233,11 +2233,11 @@ class database
     }
 
     /**
-     * Method creates new database object for a subquery generation
+     * Method creates new Database object for a subquery generation
      *
      * @param string $subQueryAlias
      *
-     * @return database
+     * @return Database
      */
     public static function subQuery($subQueryAlias = "")
     {
@@ -2245,9 +2245,9 @@ class database
     }
 
     /**
-     * Method returns a copy of a database subquery object
+     * Method returns a copy of a Database subquery object
      *
-     * @return database new database object
+     * @return Database new Database object
      */
     public function copy()
     {
@@ -2321,7 +2321,7 @@ class database
      * @param bool   $enabled     Enable execution time tracking
      * @param string $stripPrefix Prefix to strip from the path in exec log
      *
-     * @return database
+     * @return Database
      */
     public function setTrace($enabled, $stripPrefix = null)
     {
@@ -2331,7 +2331,7 @@ class database
     }
 
     /**
-     * Get where and what function was called for query stored in database->trace
+     * Get where and what function was called for query stored in Database->trace
      *
      * @return string with information
      */
@@ -2379,7 +2379,7 @@ class database
      *
      * @param string $idField field name to use for a mapped element key
      *
-     * @return database
+     * @return Database
      */
     public function map($idField)
     {
@@ -2392,7 +2392,7 @@ class database
      *
      * @access public
      *
-     * @param string       $table  The name of the database table to work with
+     * @param string       $table  The name of the Database table to work with
      * @param int          $page   Page number
      * @param array|string $fields Array or coma separated list of fields to fetch
      *
@@ -2413,8 +2413,8 @@ class database
      * @uses $dbWrapper->joinWhere('user u', 'u.id', 7)->where('user u', 'u.title', 'MyTitle');
      *
      * @param string $whereJoin  The name of the table followed by its prefix.
-     * @param string $whereProp  The name of the database field.
-     * @param mixed  $whereValue The value of the database field.
+     * @param string $whereProp  The name of the Database field.
+     * @param mixed  $whereValue The value of the Database field.
      *
      * @param string $operator
      * @param string $cond
@@ -2433,8 +2433,8 @@ class database
      * @uses $dbWrapper->joinWhere('user u', 'u.id', 7)->where('user u', 'u.title', 'MyTitle');
      *
      * @param string $whereJoin  The name of the table followed by its prefix.
-     * @param string $whereProp  The name of the database field.
-     * @param mixed  $whereValue The value of the database field.
+     * @param string $whereProp  The name of the Database field.
+     * @param mixed  $whereValue The value of the Database field.
      * @param string $operator
      *
      * @return $this
