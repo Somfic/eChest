@@ -9,7 +9,7 @@ class User
 
     public function __construct($user = null)
     {
-        $this->_db = database::getInstance();
+        $this->_db = Database::getInstance();
         $this->_sessionName = Config::get('session/session_name');
         $this->_cookieName = Config::get('remember/cookie_name');
 
@@ -34,8 +34,10 @@ class User
 
         $salt = Hash::salt(32);
 
+        $uid = json_decode(Cors::get("https://api.mojang.com/users/profiles/minecraft/{$username}"))->id;
+        $username = end(json_decode(Cors::get("https://api.mojang.com/user/profiles/{$uid}/names")))->name;
         $values = array(
-            'uid' => json_decode(Cors::get("https://api.mojang.com/users/profiles/minecraft/{$username}"))->id,
+            'uid' => $uid,
             'password' => Hash::make($password, $salt),
             'salt' => $salt,
             'username' => $username,
