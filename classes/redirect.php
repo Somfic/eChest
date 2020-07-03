@@ -4,8 +4,8 @@ class Redirect
     public static function to($path = null)
     {
         if (isset($path)) {
-            header("Location: {$path}");
-            exit();
+            echo "<script>console.log('Redirect to " . $path . "');</script>";
+            echo "<script>window.location.replace('" . $path . "') </script>";
         }
     }
 }
