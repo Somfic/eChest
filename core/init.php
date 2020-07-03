@@ -2,7 +2,7 @@
 session_start();
 $GLOBALS['config'] = array(
     'mysql' => array(
-        'host' => '127.0.0.1',
+        'host' => 'localhost',
         'username' => 'root',
         'password' => '',
         'database' => 'echest'
@@ -21,7 +21,7 @@ spl_autoload_register(function ($class) {
     require_once $_SERVER['DOCUMENT_ROOT'] . '/classes' . '/' . $class . '.php';
 });
 
-$db = new database(
+$db = new Database(
     Config::get('mysql/host'),
     Config::get('mysql/username'),
     Config::get('mysql/password'),
