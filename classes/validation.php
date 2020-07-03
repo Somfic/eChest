@@ -7,7 +7,7 @@
 
         public function __construct()
         {
-            $this->_db = database::getInstance();
+            $this->_db = Database::getInstance();
         }
 
         public function check($source, $items = array())
