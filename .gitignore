@@ -1,2 +1,5 @@
 /.git
 /.vscode
+style/light.css
+style/light.dev.css
+style/light.min.css
