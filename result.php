@@ -1,5 +1,6 @@
 <?php require_once './core/init.php'; ?>
 <?php include './includes/top.php'; ?>
+<?php Redirect::to(Session::get('result-redirect'), 4000) ?>
 
 <div class="flex center height-screen align-center">
     <div>

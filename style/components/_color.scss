@@ -15,7 +15,7 @@
 }
 
 .bg-contrast {
-	background: linear-gradient(255deg, $accent, $accent2);
+	background: linear-gradient(255deg, adjust-hue($accent, -30deg), adjust-hue($accent, 30deg));
 }
 
 .success {

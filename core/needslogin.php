@@ -1,6 +1,8 @@
 <?php
 
+// Get the current user
 $user = new User();
 if (!$user->isLoggedIn()) {
-    Redirect::to('/index.php');
+    Redirect::to('/login.php');
+    exit();
 }

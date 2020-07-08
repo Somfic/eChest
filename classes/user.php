@@ -42,11 +42,11 @@ class User
             'salt' => $salt,
             'username' => $username,
             'nickname' => $username,
-            'group' => 1
+            'group' => 'Unactivated'
         );
 
         if (!$db->insert('users', $values)) {
-            throw new Exception('Could not create account.');
+            throw new Exception($db->getLastError());
         }
     }
 
@@ -113,7 +113,7 @@ class User
     {
         $db = $this->_db;
         try {
-            $db->where('id', $this->data()['group'])->where($level, '1')->getOne('groups');
+            $test = $db->where('name', $this->data()['group'])->where($level, 1)->getOne('groups', $level);
 
             if ($db->count > 0) {
                 return true;
@@ -121,6 +121,8 @@ class User
         } catch (Exception $ex) {
             return false;
         }
+
+        return false;
     }
 
     public function find($user = null, $field = null)

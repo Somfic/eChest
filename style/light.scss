@@ -15,13 +15,9 @@ $text-success: #63cd5f;
 $text-error: #f94141;
 
 // Colors - accent
-$accent: rgb(227, 0, 236);
+$accent: rgb(36, 172, 120);
 $accent-hover: ligthen($accent, 5%);
 $accent-focus: darken($accent, 5%);
-
-$accent2: rgb(105, 184, 204);
-$accent2-hover: ligthen($accent2, 5%);
-$accent2-focus: darken($accent2, 5%);
 
 // Shadows
 $card-shadow: 6px 6px 16px 0 rgba(217, 210, 200, 0.51), -6px -6px 26px 0 rgba(255, 255, 255, 0.83);
@@ -29,11 +25,5 @@ $card-shadow: 6px 6px 16px 0 rgba(217, 210, 200, 0.51), -6px -6px 26px 0 rgba(25
 // Corners
 $card-radius: 10px;
 $border-radius: 0.5rem;
-
-.card {
-	box-shadow: $card-shadow;
-	border-radius: $card-radius;
-	padding: 20px;
-}
 
 @import './theia';

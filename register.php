@@ -27,6 +27,8 @@ if (Input::exists()) {
             $user = new User();
             try {
                 $user->register(Input::get('username'), Input::get('password'));
+                $user->login(Input::get('username'), Input::get('password'));
+                Logger::log('{name} registered an account', $user, 1);
                 Result::success('Account created', 'Your account has succesfully been created', 'index.php');
             } catch (Exception $ex) {
                 Result::error('Account could not be created', $ex->getMessage(), '/register.php');
@@ -50,7 +52,7 @@ if (Input::exists()) {
     <div class="col-12 col-lp-6 flex center px-4">
         <form action="" method="POST">
             <div class="form-input floating">
-                <label for="username">Username</label>
+                <label for="username">Minecraft name</label>
                 <input type="text" name="username" id="username" value="<?php echo escape(Input::get('username')) ?>" autocomplete="off">
             </div>
             <div class="form-input floating">

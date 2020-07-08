@@ -1,6 +1,15 @@
 <?php require_once './core/init.php'; ?>
 <?php require './core/needslogin.php'; ?>
 
+<?php if (!$user->hasPermission('profile.edit.own')) {
+    Logger::log('{name} tried to access update.php', $user, 2);
+    Redirect::to('/index.php');
+    exit();
+} ?>
+
+<?php include './includes/top.php'; ?>
+<?php include './includes/nav.php'; ?>
+
 <?php
 if (Token::check(Input::get('token'))) {
     $validate = new Validation();
@@ -18,7 +27,8 @@ if (Token::check(Input::get('token'))) {
                 'nickname' => Input::get('nickname')
             ));
 
-            Result::error('Account updated', 'Your account has been updated', '/index.php');
+            Logger::log('{name} changed their account details', $user, 1);
+            Result::success('Account updated', 'New details, new me', '/index.php');
         } catch (Exception $ex) {
             Result::error('Account could not be updated', $ex->getMessage(), '/update.php');
         }
@@ -29,15 +39,17 @@ if (Token::check(Input::get('token'))) {
     }
 }
 ?>
+<main>
+    <form action="" method="POST">
+        <div class="form-input">
+            <label for="nickname">Nickname</label>
+            <input type="text" name="nickname" id="nickname" value="<?php echo escape($user->data()['nickname']) ?>">
+        </div>
 
-<?php include './includes/header.php'; ?>
-<form action="" method="POST">
-    <div class="form-input">
-        <label for="nickname">Nickname</label>
-        <input type="text" name="nickname" id="nickname" value="<?php echo escape($user->data()['nickname']) ?>">
-    </div>
+        <input type="hidden" name="token" value="<?php echo Token::generate() ?>">
+        <input class="button" type="submit" value="Update profile">
+    </form>
+</main>
 
-    <input type="hidden" name="token" value="<?php echo Token::generate() ?>">
-    <input class="button" type="submit" value="Update profile">
-</form>
 <?php include './includes/footer.php'; ?>
+<?php include './includes/bottom.php'; ?>

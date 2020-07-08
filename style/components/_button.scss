@@ -7,7 +7,7 @@
 	letter-spacing: 0.01em;
 	transition: 200ms ease;
 	line-height: 1.5;
-	display: block;
+	display: inline-block;
 	text-align: center;
 	cursor: pointer;
 
@@ -25,6 +25,10 @@
 	&:active {
 		background-color: darken($accent, 5%);
 		color: getTextColor(darken($accent, 5%));
+	}
+
+	&-inline {
+		padding: 0.25em 1rem;
 	}
 }
 

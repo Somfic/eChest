@@ -18,6 +18,7 @@ if (Token::check(Input::get('token'))) {
         $login = $user->login(Input::get('username'), Input::get('password'), $remember);
 
         if ($login) {
+            Logger::log('{name} logged in', $user);
             Result::success('Logged in', greeting() . ' ' . $user->data()['nickname'] . '!', 'index.php');
         } else {
             Result::error('You weren\'t logged in', 'Hmm, let\'s try that again...', 'index.php');
@@ -41,7 +42,7 @@ if (Token::check(Input::get('token'))) {
     <div class="col-12 col-lp-6 flex center px-4">
         <form action="" method="POST">
             <div class="form-input floating">
-                <label for="username">Username</label>
+                <label for="username">Minecraft name</label>
                 <input type="text" name="username" id="username" required>
             </div>
             <div class="form-input floating">

@@ -437,7 +437,7 @@ class Database
      *
      * @return Database Returns the current instance.
      */
-    protected function reset()
+    public function reset()
     {
         if ($this->traceEnabled) {
             $this->trace[] = array($this->_lastQuery, (microtime(true) - $this->traceStartQ), $this->_traceGetCaller());
@@ -724,7 +724,13 @@ class Database
             $columns = '*';
         }
 
-        $column = is_array($columns) ? implode(', ', $columns) : $columns;
+        if (is_array($columns)) {
+            $column = '`' . implode('`, `', $columns) . '`';
+        } else if ($columns !== '*') {
+            $column = '`' . $columns . '`';
+        } else {
+            $column = '*';
+        }
 
         if (strpos($tableName, '.') === false) {
             $this->_tableName = self::$prefix . $tableName;
@@ -967,6 +973,10 @@ class Database
      */
     public function where($whereProp, $whereValue = 'DBNULL', $operator = '=', $cond = 'AND')
     {
+        if ($whereProp != '*') {
+            $whereProp = '`' . $whereProp . '`';
+        }
+
         if (count($this->_where) == 0) {
             $cond = '';
         }

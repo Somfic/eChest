@@ -1,6 +1,15 @@
 <?php require_once './core/init.php'; ?>
 <?php require './core/needslogin.php'; ?>
 
+<?php if (!$user->hasPermission('profile.edit.own')) {
+    Logger::log('{name} tried to access changepassword.php', $user, 2);
+    Redirect::to('/index.php');
+    exit();
+} ?>
+
+<?php include './includes/top.php'; ?>
+<?php include './includes/nav.php'; ?>
+
 <?php
 if (Token::check(Input::get('token'))) {
     $validate = new Validation();
@@ -31,7 +40,8 @@ if (Token::check(Input::get('token'))) {
                     'salt' => $salt
                 ));
 
-                Result::success('Password changed', 'Your password has been changed', '/index.php');
+                Logger::log('{name} changed their password', $user, 1);
+                Result::success('Password changed', 'Take that, hackers!', '/index.php');
             } catch (Exception $ex) {
                 Result::error('Password could not be changed', $ex->getMessage(), '/changepassword.php');
             }
@@ -44,24 +54,26 @@ if (Token::check(Input::get('token'))) {
 }
 ?>
 
-<?php include './includes/header.php'; ?>
-<form action="" method="POST">
-    <div class="form-input">
-        <label for="password">Current password</label>
-        <input type="password" name="password" id="password">
-    </div>
+<main>
+    <form action="" method="POST">
+        <div class="form-input floating">
+            <label for="password">Current password</label>
+            <input type="password" name="password" id="password">
+        </div>
 
-    <div class="form-input">
-        <label for="password_new">New password</label>
-        <input type="password" name="password_new" id="password_new">
-    </div>
+        <div class="form-input floating">
+            <label for="password_new">New password</label>
+            <input type="password" name="password_new" id="password_new">
+        </div>
 
-    <div class="form-input">
-        <label for="password_new_confirm">New password confirm</label>
-        <input type="password" name="password_new_confirm" id="password_new_confirm">
-    </div>
+        <div class="form-input floating">
+            <label for="password_new_confirm">New password confirm</label>
+            <input type="password" name="password_new_confirm" id="password_new_confirm">
+        </div>
 
-    <input type="hidden" name="token" value="<?php echo Token::generate() ?>">
-    <input class="button" type="submit" value="Update profile">
-</form>
+        <input type="hidden" name="token" value="<?php echo Token::generate() ?>">
+        <input class="button" type="submit" value="Update profile">
+    </form>
+</main>
 <?php include './includes/footer.php'; ?>
+<?php include './includes/bottom.php'; ?>

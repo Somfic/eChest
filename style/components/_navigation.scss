@@ -6,3 +6,39 @@
 		padding: 2rem;
 	}
 }
+
+.nav {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-around;
+	background-color: $bg-form;
+
+	&-logo {
+		padding: 1rem;
+
+		a {
+			font-weight: 500;
+			padding: 1rem;
+			color: getTextColor($bg-form);
+		}
+
+		a:hover,
+		.active {
+			color: $accent;
+		}
+	}
+
+	&-links {
+		padding: 1rem;
+
+		a {
+			padding: 1rem;
+			color: getTextColor($bg-form);
+		}
+
+		a:hover,
+		.active {
+			color: $accent;
+		}
+	}
+}
