@@ -14,8 +14,10 @@
 	background-color: $bg;
 }
 
-.bg-contrast {
-	background: linear-gradient(255deg, adjust-hue($accent, -30deg), adjust-hue($accent, 30deg));
+.bg-gradient {
+	background: linear-gradient(45deg, adjust-hue($accent, 50deg), adjust-hue($accent, -50deg));
+	background-size: 300% 300%;
+	animation: GradientSpin 10s ease infinite;
 }
 
 .success {
@@ -24,4 +26,16 @@
 
 .error {
 	color: $text-error;
+}
+
+@keyframes GradientSpin {
+	0% {
+		background-position: 0% 0%;
+	}
+	50% {
+		background-position: 100% 100%;
+	}
+	100% {
+		background-position: 0% 0%;
+	}
 }

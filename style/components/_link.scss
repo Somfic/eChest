@@ -5,6 +5,10 @@ a {
 	background: none;
 	border: none;
 	cursor: pointer;
+
+	&:hover {
+		color: $accent-hover;
+	}
 }
 
 .link:after {

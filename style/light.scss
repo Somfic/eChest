@@ -15,15 +15,16 @@ $text-success: #63cd5f;
 $text-error: #f94141;
 
 // Colors - accent
-$accent: rgb(36, 172, 120);
+$accent: rgb(165, 201, 99);
 $accent-hover: ligthen($accent, 5%);
 $accent-focus: darken($accent, 5%);
 
 // Shadows
-$card-shadow: 6px 6px 16px 0 rgba(217, 210, 200, 0.51), -6px -6px 26px 0 rgba(255, 255, 255, 0.83);
+$card-shadow: 6px 6px 16px 0 rgba(0, 0, 0, 0.137), -6px -6px 16px 0 rgba(34, 32, 32, 0.199);
 
 // Corners
 $card-radius: 10px;
 $border-radius: 0.5rem;
+$border: gray;
 
 @import './theia';

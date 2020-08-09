@@ -8,9 +8,7 @@
 }
 
 $db = Database::getInstance();
-$audits = $db->orderBy('timestamp')->where('action_type', 1)->get('audits');
-$adminAudits = $db->orderBy('timestamp')->where('action_type', 2)->get('audits');
-?>
+$uid = 'EC ' . random_int(10, 99) . ' ' . random_int(1000, 9999) . ' ' . random_int(1000, 9999) . ' ' .  random_int(10, 99); ?>
 
 <?php include '../includes/top.php'; ?>
 <?php include '../includes/nav.php'; ?>
@@ -24,7 +22,7 @@ $adminAudits = $db->orderBy('timestamp')->where('action_type', 2)->get('audits')
         </div>
         <div class="form-input">
             <label for="uid">BIN - Bank Identification Number</label>
-            <input type="text" name="uid" id="uid" value="" autocomplete="off">
+            <input type="text" name="uid" id="uid" value="<?php echo $uid ?>" autocomplete="off" disabled>
         </div>
         <div class="form-input floating">
             <label for="password">Password</label>

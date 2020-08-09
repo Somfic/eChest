@@ -1,5 +1,5 @@
-<?php require_once './core/init.php'; ?>
-<?php require './core/needslogin.php'; ?>
+<?php require_once '../core/init.php'; ?>
+<?php require '../core/needslogin.php'; ?>
 
 <?php if (!$user->hasPermission('profile.edit.own')) {
     Logger::log('{name} tried to access update.php', $user, 2);
@@ -7,8 +7,8 @@
     exit();
 } ?>
 
-<?php include './includes/top.php'; ?>
-<?php include './includes/nav.php'; ?>
+<?php include '../includes/top.php'; ?>
+<?php include '../includes/nav.php'; ?>
 
 <?php
 if (Token::check(Input::get('token'))) {
@@ -40,6 +40,7 @@ if (Token::check(Input::get('token'))) {
 }
 ?>
 <main>
+    <h2>Update account</h2>
     <form action="" method="POST">
         <div class="form-input">
             <label for="nickname">Nickname</label>
@@ -51,5 +52,5 @@ if (Token::check(Input::get('token'))) {
     </form>
 </main>
 
-<?php include './includes/footer.php'; ?>
-<?php include './includes/bottom.php'; ?>
+<?php include '../includes/footer.php'; ?>
+<?php include '../includes/bottom.php'; ?>

@@ -31,7 +31,7 @@ if (Token::check(Input::get('token'))) {
 }
 ?>
 <div class="row height-screen">
-    <div class="col-12 col-lp-6 flex center bg-contrast">
+    <div class="col-12 col-lp-6 flex center bg-gradient">
         <div class="align-center width-full py-2">
             <h1><b>eChest</b></h1>
             <h3>Please log in to continue</h3>
@@ -61,8 +61,8 @@ if (Token::check(Input::get('token'))) {
             <input class="button primary width-full mb-2 mt-3" type="submit" value="Log in">
         </form>
         <div class="align-center mt-2 flex-vertical">
-            <a href="/register.php">Register an account</a>
-            <a href="#">Forgot your password?</a>
+            <a class="link" href="/register.php">Register an account</a>
+            <a class="link" href="#">Forgot your password?</a>
         </div>
     </div>
 </div>
